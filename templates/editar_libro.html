@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Editar {{ libro.titulo }}</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Nunito', sans-serif;
+      background-color: #fff;
+      margin: 0;
+      padding: 0;
+      color: #1e1e1e;
+    }
+
+    header {
+      background-color: #2e1065;
+      padding: 1rem 2rem;
+      color: white;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    a.volver {
+      display: block;
+      margin: 1rem 2rem;
+      color: #2e1065;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    main {
+      max-width: 600px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background-color: #f9f9f9;
+      border-radius: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    h1 {
+      font-family: 'Poppins', sans-serif;
+      color: #2e1065;
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    input[type="text"],
+    input[type="file"] {
+      width: 100%;
+      padding: 0.6rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-family: 'Nunito', sans-serif;
+      margin-bottom: 1.2rem;
+    }
+
+    button[type="submit"] {
+      background-color: #2e1065;
+      color: white;
+      border: none;
+      padding: 0.7rem 1.5rem;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #3f1a9b;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <span>Editar libro</span>
+  </header>
+
+  <a class="volver" href="{{ url_for('detalle_libro', libro_id=libro.id) }}">← Volver al libro</a>
+
+  <main>
+    <h1>Editar: {{ libro.titulo }}</h1>
+    <form method="POST" enctype="multipart/form-data">
+      <label for="titulo">Título:</label>
+      <input type="text" id="titulo" name="titulo" value="{{ libro.titulo }}" required>
+
+      <label for="autor">Autor:</label>
+      <input type="text" id="autor" name="autor" value="{{ libro.autor }}" required>
+
+      <label for="genero">Género:</label>
+      <input type="text" id="genero" name="genero" value="{{ libro.genero }}">
+
+      <label for="portada">Cambiar portada:</label>
+      <input type="file" id="portada" name="portada" accept=".jpg,.jpeg,.png">
+
+      <button type="submit">Actualizar libro</button>
+    </form>
+  </main>
+
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <title>Login</title>
+
+    <!-- Fuentes de Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&family=Poppins:wght@600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #d9d9d9;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        .login-container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 0 0 3px #a388d8;
+            width: 350px;
+            text-align: center;
+        }
+
+        .login-container h1 {
+            color: #32125f;
+            margin-bottom: 5px;
+            font-size: 24px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .login-container h2 {
+            font-weight: normal;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            text-align: left;
+            margin: 10px 0 5px;
+            font-size: 14px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 8px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        .error {
+            color: red;
+            font-size: 12px;
+            text-align: left;
+        }
+
+        .register-link {
+            margin-top: 10px;
+            font-size: 13px;
+        }
+
+        .register-link a {
+            color: #32125f;
+            text-decoration: none;
+        }
+
+        button, input[type="submit"] {
+            background-color: #32125f;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        button:hover, input[type="submit"]:hover {
+            background-color: #48217e;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Mi Librería</h1>
+        <h2>Iniciar Sesión</h2>
+        <form method="POST" action="{{ url_for('login') }}">
+            {{ form.hidden_tag() }}
+
+            <label>{{ form.email.label }}</label>
+            {{ form.email(size=32) }}
+            {% for error in form.email.errors %}
+                <div class="error">{{ error }}</div>
+            {% endfor %}
+
+            <label>{{ form.password.label }}</label>
+            {{ form.password(size=32) }}
+            {% for error in form.password.errors %}
+                <div class="error">{{ error }}</div>
+            {% endfor %}
+
+            {{ form.submit(class="btn") }}
+        </form>
+        <div class="register-link">
+            ¿No tienes cuenta? <a href="{{ url_for('registro') }}">Regístrate aquí</a>
+        </div>
+    </div>
+</body>
+</html>

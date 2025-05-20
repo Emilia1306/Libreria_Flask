@@ -1,0 +1,24 @@
+# Entorno virtual
+venv/
+
+# Archivos de migraciones generados por Flask-Migrate
+migrations/
+
+# Archivos de subida (portadas)
+static/uploads/
+
+# Archivos pycache y de sistema
+__pycache__/
+*.pyc
+*.pyo
+
+# IDEs y editores
+.vscode/
+.idea/
+
+# Archivos de sistema
+.DS_Store
+
+# Otros archivos temporales
+*.log
+*.sqlite3
